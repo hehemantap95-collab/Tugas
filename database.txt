@@ -1,0 +1,29 @@
+CREATE DATABASE lapor_fasilitas;
+USE lapor_fasilitas;
+
+CREATE TABLE admin (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ username VARCHAR(50),
+ password VARCHAR(255)
+);
+
+INSERT INTO admin VALUES (1,'admin',MD5('admin123'));
+
+CREATE TABLE laporan (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ nama VARCHAR(100),
+ kontak VARCHAR(100),
+ kategori VARCHAR(50),
+ lokasi TEXT,
+ deskripsi TEXT,
+ foto VARCHAR(255),
+ status ENUM('Menunggu','Diproses','Selesai') DEFAULT 'Menunggu',
+ tanggal TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO laporan (nama,kontak,kategori,lokasi,deskripsi,foto,status) VALUES
+('Budi','081234','Jalan','Jl. Merdeka','Banyak lubang','demo1.jpg','Menunggu'),
+('Ani','082345','Lampu','Alun-alun','Lampu mati','demo2.jpg','Diproses'),
+('Dedi','083456','Air','PDAM','Air keruh','demo3.jpg','Selesai'),
+('Siti','084567','Bangunan','Sekolah','Atap bocor','demo4.jpg','Menunggu'),
+('Rian','085678','Lainnya','Pasar','Sampah menumpuk','demo5.jpg','Diproses');
